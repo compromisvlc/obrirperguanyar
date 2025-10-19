@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compromís: federar-nos per créixer, obrir-nos per guanyar</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Manifest de la militancia de Compromís a favor d'una federació estable i de l'obertura de l'organització per recuperar la dignitat política al País Valencià" />
+  <meta name="keywords" content="Compromís, País Valencià, manifest polític, Joan Ribó, unitat organitzada, obertura real, federació, progressisme" />
+  <meta name="author" content="Joan Ribó, Manuel Alcaraz, Papi Robles, Francisco Candela" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="Catalan" />
+  <link rel="canonical" href="https://obrirperguanyar.com" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://obrirperguanyar.com" />
+  <meta property="og:title" content="Compromís: federar-nos per créixer, obrir-nos per guanyar" />
+  <meta property="og:description" content="Manifest de la militancia de Compromís a favor d'una federació estable i de l'obertura de l'organització per recuperar la dignitat política al País Valencià" />
+  <meta property="og:image" content="./obrirperguanyar.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ca_ES" />
+  <meta property="og:site_name" content="Obrir per Guanyar" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://obrirperguanyar.com" />
+  <meta name="twitter:title" content="Compromís: federar-nos per créixer, obrir-nos per guanyar" />
+  <meta name="twitter:description" content="Manifest de la militancia de Compromís a favor d'una federació estable i de l'obertura de l'organització per recuperar la dignitat política al País Valencià" />
+  <meta name="twitter:image" content="./obrirperguanyar.jpg" />
+
+  <!-- Additional Meta Tags -->
+  <meta name="theme-color" content="#FF6720" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #FFFFFF;
+      --text: #353949;
+      --accent: #FF6720;
+      --muted: #9AA0AE;
+      --card: #FFFFFF;
+      --shadow: 0 8px 28px rgba(53,57,73,0.12);
+      --radius: 20px;
+      --maxw: 880px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+    }
+    .wrap{
+      max-width: var(--maxw);
+      padding: 32px 20px 80px;
+      margin: 0 auto;
+    }
+    .eyebrow{color:var(--accent); font-weight:700; letter-spacing:.02em; font-size:14px; text-transform:uppercase}
+    h1{font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0; font-weight:700; color:var(--text)}
+    .authors{font-size: 16px; color: #000000; text-align: center}
+
+    .card{background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; position: relative;}
+
+    .manifest__content{
+      padding: 22px 22px 14px;
+      max-height: 340px;
+      overflow: hidden;
+      transition: max-height .5s ease;
+      position: relative;
+    }
+    .manifest__content.expanded{ max-height: 2000px; }
+    .fade{
+      position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), var(--card) 60%);
+      transition: opacity .3s ease;
+    }
+    .manifest__content.expanded .fade{ opacity: 0; }
+    .read-more{text-align: center; padding: 8px 20px 16px; position: relative; z-index: 10;}
+    .read-more-link{color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: underline; cursor: pointer; background: none; border: none; transition: opacity 0.2s ease;}
+    .read-more-link:hover{opacity: 0.8;}
+    .controls{display:flex; flex-direction: column; align-items: center; gap:12px; padding: 14px 20px 20px}
+    .btn{appearance:none; border:0; padding: 12px 16px; border-radius: 14px; font-weight:700; cursor:pointer; font-size:15px; background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(255,103,32,0.35)}
+    .btn.primary{ padding: 16px 32px; font-size: 18px; }
+    .btn.secondary{ background:#fff; color: var(--accent); border: 2px solid var(--accent); box-shadow:none }
+    .sign-section{ margin-top: 18px }
+    .signers{background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; margin-top: 20px;}
+    .signers-header{display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;}
+    .signers h3{font-size: 24px; font-weight:700; margin:0; color:var(--text)}
+    .signers-subtitle{font-size: 14px; color: var(--muted); font-weight: 400;}
+    .signer-list{display: grid; gap: 12px;}
+    .signer-item{padding: 10px 0; border-bottom: 1px solid #f0f0f0;}
+    .signer-item:last-child{border-bottom: none;}
+    .signer-name{font-weight:700; color: #000000; font-size: 16px;}
+    .signer-details{color: var(--muted); font-size: 14px; margin-top: 4px;}
+  </style>
+</head>
+<body>
+  <main class="wrap" id="top">
+    <article class="card manifest" aria-labelledby="manifest-title">
+      <div class="manifest__content" id="manifest-content" aria-hidden="true">
+        <h2 style="font-weight:700; color:var(--text); margin-top:0; margin-bottom:16px; font-size: clamp(32px, 5vw, 52px); line-height: 1.2; letter-spacing: -0.02em;">Compromís: federar-nos per créixer, obrir-nos per guanyar</h2>
+        <p class="authors"><strong style="font-weight:700">Per:</strong> Joan Ribó, Manuel Alcaraz, Papi Robles i Francisco Candela</p>
+
+        <p>En les circumstàncies polítiques i socials actuals, no cal justificar l'existència i labor de Compromís: en el País Valencià, Espanya i la Unió Europea, Compromís representa una idea de <strong>pluralitat</strong> capaç de imaginar un futur millor, contribuir a <strong>frenar a la ultradreta</strong> i a formular dinàmiques estratègiques que superen la política entesa com el simple agregat de la gestió puntual i sectorial de problemes.</p>
+
+        <p>I ho ha fet des de la <strong>organització efectiva i generosa</strong>, cosa que no impedeix, per descomptat, ressaltar la capacitat de Compromís per a actuar molt prop de les dificultats reals de la majoria de persones i ésser una força especialment sensible a la necessitat d'aprofundir en la igualtat allà on existisca discriminació i de tindre millors perspectives dels problemes valencians. En síntesi: <strong>posar la vida quotidiana al centre</strong> i fer-ho amb rigor.</p>
+
+        <p>Compromís va sorgir com una aliança de tres partits en un moment on calia una resposta a les polítiques especuladores i allunyades dels interessos de la majoria, per ser una força política valenciana rellevant amb capacitat de transformació. Eixa coalició de referents que tan útil ha segut estos anys, ha de donar un pas endavant per establir-se i estructurar-se definitivament</p>
+
+        <p>La trajectòria de Compromís està marcada per la seua voluntat i bona praxi en promoure convergències i ponts estables amb el teixit social i comunitari i amb altres forces polítiques valencianes i espanyoles. Compromís ha demostrat capacitat d'exercir una oposició nítida i enèrgica. Fa sols uns anys, la seua presència i impuls en el Govern del Botànic i en el de molts Ajuntaments –especialment en el de València-, va ser decisiva per a promoure polítiques que van canviar la realitat en qüestions com la defensa de la igualtat i solidaritat, la millora de la qualitat de vida, la transparència i integritat pública, l'educació i la sanitat públiques, les polítiques mediambientals, cada vegada més urgents, per mitigar i adaptar-nos al canvi climàtic i les formes de bon govern, obertes a la ciutadania i al diàleg, alié a temptacions autoritàries.</p>
+
+        <p>Eixe és el valor d'una eina útil quan treballa junta i organitzada. Per això, Compromís pot defensar que l'única eixida al bloqueig actual de la política valenciana causat per l'actitud negligent del president Mazón i el Partit Popular arran de la DANA, així com per la insuportable incompetència del seu Consell i a l'amenaça de l'avanç de Vox, siga <strong>construir una convergència que, junt amb el PSPV, faça possible un altre govern d'esquerres</strong>. Per això cal emplaçar també a altres forces d'esquerra a treballar en eixa direcció en proximitat i cooperació amb els teixits populars organitzats: moviments socials, sindicats, cooperatives, espais de pensament crític o assemblees ciutadanes.</p>
+
+        <p>En este context, Compromís ha de fer un esforç per millorar la seua estructura, per a fer-la <strong>més transparent, democràtica i robusta</strong>:</p>
+
+        <ul>
+          <li>Cal impulsar les dinàmiques que permeten un acostament entre les forces que la integren i generar mecanismes de presa de decisió clars i eficaces.</li>
+          <li>Cal superar alguns biaixos de desconfiança mútua, que exigeixen constància i mirada generosa, per aconseguir més organització i menys soroll.</li>
+          <li>Cal aconseguir, de manera ordenada i estratègicament planificada, el desenvolupament de la seua implantació territorial, perquè un risc evident és la pèrdua de vots per l'absència de Compromís en moltes comarques i ciutats mitjanes. Este fet no es deu exclusivament a raons identitàries o lingüístiques, sinó que obeeix a una absència de propostes i formes dinàmiques de treball, i a una absència de responsabilitat per les diverses direccions.</li>
+          <li>Cal seguir treballant en una formació e integració adequada, professionalitzada i modernitzada de quadres.</li>
+          <li>Cal una organització oberta i activa: que continue buscant la participació efectiva, el retiment de comptes regular i el treball de proximitat als barris i pobles, seguint fent nostres les necessitats del carrer.</li>
+        </ul>
+
+        <p>I perquè tot això siga possible, l'essencial és una clarificació a llarg termini de les nostres definicions ideològiques i polítiques, que en aquesta etapa no poden satisfer-se amb eslògans envellits, llocs comuns o la confiança abstracta en lideratges carismàtics.</p>
+
+        <p>Això demana també, la definició sobre la futura estructura de l'Estat, en trànsit de recentralització; les opcions per una Unió Europea més unida, segura i solidària i l'examen seré de l'ascens dels populismes, i ha d'unir-se a una revisió general del nostre Programa per al País Valencià: l'agenda valenciana no pot concebre's com un fòssil que mai canvia, sobre el qual abocar laments i queixes, sinó com el fruit de l'anàlisi de les grans qüestions que té plantejades el poble valencià, especialment els més vulnerables. Tot plegat, des de la unitat orgànica i amb obertura real al país, per escoltar i incorporar el saber col·lectiu i existent.</p>
+
+        <p>Donades les actuals circumstàncies, la peculiar existència d'un Consell afeblit, l'auge de Vox, el viratge del suport de sectors importants de la joventut cap a la dreta, l'avanç del trumpisme, la generalització de relats basats en la violència i la possibilitat d'avançaments electorals o, almenys, d'una major vulnerabilitat del Govern d'Espanya, totes les qüestions ací apuntades, haurien de canalitzar-se, amb les seues corresponents vies concretes de treball, abans de la fi de l'any.</p>
+
+        <p>Per això, les firmants d'esta carta instem a la militància i les direccions dels diferents partits que integren Compromís a fer-ho amb dos criteris necessaris: (1) <strong>unitat organitzada</strong> —amb passos clars cap a una federació que ens done estabilitat— i (2) <strong>obertura real</strong> —amb espais de diàleg i corresponsabilitat amb els teixits populars organitzats i altres forces polítiques progressistes—. És així com farem un moviment més potent, útil i proper. <strong>El moment és ara.</strong></p>
+        <div class="fade" aria-hidden="true"></div>
+      </div>
+      <div class="read-more">
+        <button class="read-more-link" id="toggleManifest">Llegir el manifest</button>
+      </div>
+      <div class="controls">
+        <button class="btn primary" id="openModal">Signa el manifest</button>
+      </div>
+    </article>
+
+    <section class="signers card" id="signers-section">
+      <div class="signers-header">
+        <h3 id="signers-title">Signants</h3>
+        <span class="signers-subtitle">El llistat s'actualitza periòdicament</span>
+      </div>
+      <div class="signer-list" id="signer-list">
+        <p style="color: var(--muted); text-align: center;">Carregant signants...</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="fillout-container" data-fillout-id="tR6JuoZtdRus" data-fillout-embed-type="popup" data-fillout-dynamic-resize data-fillout-inherit-parameters data-fillout-popup-size="medium" style="display: none;"></div>
+  <script src="https://server.fillout.com/embed/v1/"></script>
+
+  <script>
+    // Toggle manifest expansion
+    document.getElementById('toggleManifest').addEventListener('click', function() {
+      const content = document.getElementById('manifest-content');
+      content.classList.toggle('expanded');
+      this.textContent = content.classList.contains('expanded') ? 'Amaga el manifest' : 'Llegir el manifest';
+    });
+
+    // Sign manifest button - opens Fillout popup
+    document.getElementById('openModal').addEventListener('click', function() {
+      // Trigger the Fillout popup by clicking the embedded button
+      const filloutButton = document.querySelector('[data-fillout-id="tR6JuoZtdRus"] button');
+      if (filloutButton) {
+        filloutButton.click();
+      }
+    });
+
+    // Fetch and display signers from Google Sheets CSV
+    function loadSigners() {
+      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSXVCrhgzjrl9NN0746iN4f4uheEXZdYiugiKqbFYq9S8Rjgtnp-2N_WdaD0vW2fPraGowppqx6RHgA/pub?output=csv';
+
+      fetch(csvUrl)
+        .then(response => response.text())
+        .then(data => {
+          const lines = data.split('\n');
+          const signerList = document.getElementById('signer-list');
+          signerList.innerHTML = '';
+
+          let count = 0;
+
+          // Skip header row (index 0) and process data rows
+          for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+
+            // Parse CSV line (handle quoted values)
+            const values = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
+            const cleanValues = values.map(v => v.replace(/^"|"$/g, '').trim());
+
+            if (cleanValues.length >= 4) {
+              const [name, surname, role, city] = cleanValues;
+
+              const signerItem = document.createElement('div');
+              signerItem.className = 'signer-item';
+              signerItem.innerHTML = `
+                <div class="signer-name">${name} ${surname}</div>
+                <div class="signer-details">${role}, ${city}</div>
+              `;
+              signerList.appendChild(signerItem);
+              count++;
+            }
+          }
+
+          // Update title with count
+          document.getElementById('signers-title').textContent = `${count} Signants`;
+
+          if (signerList.children.length === 0) {
+            signerList.innerHTML = '<p style="color: var(--muted); text-align: center;">No hi ha signants encara.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Error loading signers:', error);
+          document.getElementById('signer-list').innerHTML = '<p style="color: var(--muted); text-align: center;">Error carregant signants.</p>';
+        });
+    }
+
+    // Load signers when page loads
+    loadSigners();
+  </script>
+</body>
+</html>
