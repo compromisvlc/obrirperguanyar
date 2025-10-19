@@ -69,23 +69,27 @@
     h1{font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0; font-weight:700; color:var(--text)}
     .authors{font-size: 16px; color: #000000; text-align: center}
 
-    .card{background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; position: relative;}
+    .card{background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); position: relative; overflow: visible;}
 
     .manifest__content{
-      padding: 22px 22px 14px;
-      max-height: 340px;
-      overflow: hidden;
-      transition: max-height .5s ease;
-      position: relative;
+      padding: 22px;
     }
-    .manifest__content.expanded{ max-height: 2000px; }
+    .manifest__text{
+      position: relative;
+      max-height: 10000px;
+      transition: max-height 0.5s ease;
+      overflow: hidden;
+    }
+    .manifest__text.collapsed{
+      max-height: 300px;
+    }
     .fade{
       position: absolute; left: 0; right: 0; bottom: 0; height: 120px;
       pointer-events: none;
       background: linear-gradient(to bottom, rgba(255,255,255,0), var(--card) 60%);
-      transition: opacity .3s ease;
     }
-    .manifest__content.expanded .fade{ opacity: 0; }
+    .manifest__text.collapsed .fade{ display: block; }
+    .manifest__text:not(.collapsed) .fade{ display: none; }
     .read-more{text-align: center; padding: 8px 20px 16px; position: relative; z-index: 10;}
     .read-more-link{color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: underline; cursor: pointer; background: none; border: none; transition: opacity 0.2s ease;}
     .read-more-link:hover{opacity: 0.8;}
@@ -103,15 +107,19 @@
     .signer-item:last-child{border-bottom: none;}
     .signer-name{font-weight:700; color: #000000; font-size: 16px;}
     .signer-details{color: var(--muted); font-size: 14px; margin-top: 4px;}
+    ul{margin: 16px 0; padding-left: 24px;}
+    li{margin-bottom: 12px; line-height: 1.6; word-wrap: break-word; overflow-wrap: break-word;}
+
   </style>
 </head>
 <body>
   <main class="wrap" id="top">
     <article class="card manifest" aria-labelledby="manifest-title">
-      <div class="manifest__content" id="manifest-content" aria-hidden="true">
+      <div class="manifest__content" id="manifest-content">
         <h2 style="font-weight:700; color:var(--text); margin-top:0; margin-bottom:16px; font-size: clamp(32px, 5vw, 52px); line-height: 1.2; letter-spacing: -0.02em;">Compromís: federar-nos per créixer, obrir-nos per guanyar</h2>
         <p class="authors"><strong style="font-weight:700">Per:</strong> Joan Ribó, Manuel Alcaraz, Papi Robles i Francisco Candela</p>
 
+        <div class="manifest__text collapsed" id="manifest-text">
         <p>En les circumstàncies polítiques i socials actuals, no cal justificar l'existència i labor de Compromís: en el País Valencià, Espanya i la Unió Europea, Compromís representa una idea de <strong>pluralitat</strong> capaç de imaginar un futur millor, contribuir a <strong>frenar a la ultradreta</strong> i a formular dinàmiques estratègiques que superen la política entesa com el simple agregat de la gestió puntual i sectorial de problemes.</p>
 
         <p>I ho ha fet des de la <strong>organització efectiva i generosa</strong>, cosa que no impedeix, per descomptat, ressaltar la capacitat de Compromís per a actuar molt prop de les dificultats reals de la majoria de persones i ésser una força especialment sensible a la necessitat d'aprofundir en la igualtat allà on existisca discriminació i de tindre millors perspectives dels problemes valencians. En síntesi: <strong>posar la vida quotidiana al centre</strong> i fer-ho amb rigor.</p>
@@ -140,6 +148,7 @@
 
         <p>Per això, les firmants d'esta carta instem a la militància i les direccions dels diferents partits que integren Compromís a fer-ho amb dos criteris necessaris: (1) <strong>unitat organitzada</strong> —amb passos clars cap a una federació que ens done estabilitat— i (2) <strong>obertura real</strong> —amb espais de diàleg i corresponsabilitat amb els teixits populars organitzats i altres forces polítiques progressistes—. És així com farem un moviment més potent, útil i proper. <strong>El moment és ara.</strong></p>
         <div class="fade" aria-hidden="true"></div>
+        </div>
       </div>
       <div class="read-more">
         <button class="read-more-link" id="toggleManifest">Llegir el manifest</button>
@@ -166,9 +175,16 @@
   <script>
     // Toggle manifest expansion
     document.getElementById('toggleManifest').addEventListener('click', function() {
-      const content = document.getElementById('manifest-content');
-      content.classList.toggle('expanded');
-      this.textContent = content.classList.contains('expanded') ? 'Amaga el manifest' : 'Llegir el manifest';
+      const manifestText = document.getElementById('manifest-text');
+      const isCollapsed = manifestText.classList.contains('collapsed');
+
+      if (isCollapsed) {
+        manifestText.classList.remove('collapsed');
+        this.textContent = 'Amaga el manifest';
+      } else {
+        manifestText.classList.add('collapsed');
+        this.textContent = 'Llegir el manifest';
+      }
     });
 
     // Sign manifest button - opens Fillout popup
